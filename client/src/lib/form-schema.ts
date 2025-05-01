@@ -10,9 +10,6 @@ export interface QuizFormData {
   phone: string;
   country: string;
   company: string;
-  isGovernment: boolean;
-  marketingConsent: boolean;
-  termsConsent: boolean;
 }
 
 export interface FormStageProps {
@@ -32,10 +29,5 @@ export const quoteFormSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   phone: z.string().min(1, "Phone number is required"),
   country: z.string().min(1, "Please select your country"),
-  company: z.string().optional(),
-  isGovernment: z.boolean().default(false),
-  marketingConsent: z.boolean().default(false),
-  termsConsent: z.boolean().refine(val => val === true, {
-    message: "You must agree to the terms and conditions"
-  }),
+  company: z.string().optional()
 });

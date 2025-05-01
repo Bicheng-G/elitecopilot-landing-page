@@ -38,10 +38,6 @@ export function FormStageFive({
     if (!formData.lastName) newErrors.lastName = "Last name is required";
     if (!formData.phone) newErrors.phone = "Phone number is required";
     if (!formData.company) newErrors.company = "Company is required";
-    // Terms consent is required
-    if (!formData.termsConsent) {
-      newErrors.termsConsent = "You must agree to the terms and conditions";
-    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

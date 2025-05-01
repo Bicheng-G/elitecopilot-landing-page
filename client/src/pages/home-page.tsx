@@ -26,10 +26,7 @@ export default function HomePage() {
     lastName: "",
     phone: "",
     country: "",
-    company: "",
-    isGovernment: false,
-    marketingConsent: false,
-    termsConsent: false
+    company: ""
   });
 
   const nextStage = () => {
@@ -61,10 +58,7 @@ export default function HomePage() {
       lastName: "",
       phone: "",
       country: "",
-      company: "",
-      isGovernment: false,
-      marketingConsent: false,
-      termsConsent: false
+      company: ""
     });
   };
 
@@ -139,10 +133,7 @@ export default function HomePage() {
               <input type="hidden" name="lastName" value={formData.lastName || ''} required />
               <input type="hidden" name="phone" value={formData.phone || ''} required />
               <input type="hidden" name="country" value={formData.country || ''} required /> 
-              <input type="hidden" name="company" value={formData.company || ''} />
-              <input type="hidden" name="isGovernment" value={formData.isGovernment ? 'true' : 'false'} /> 
-              <input type="hidden" name="marketingConsent" value={formData.marketingConsent ? 'true' : 'false'} />
-              <input type="hidden" name="termsConsent" value={formData.termsConsent ? 'true' : 'false'} required />
+              <input type="hidden" name="company" value={formData.company || ''} required/>
               {/* END: Hidden "Ghost" inputs */}
 
               <Card className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl/20 overflow-hidden border-t-4 border-t-orange mt-2">
