@@ -1,0 +1,226 @@
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { ProgressSteps } from "@/components/ui/progress-steps";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { HeroSection } from "@/components/hero-section";
+import { BenefitsSection } from "@/components/benefits-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { FormStageOne } from "@/components/form-stage-one";
+import { FormStageTwo } from "@/components/form-stage-two";
+import { FormStageThree } from "@/components/form-stage-three";
+import { FormStageFour } from "@/components/form-stage-four";
+import { FormStageFive } from "@/components/form-stage-five";
+import { SuccessModal } from "@/components/success-modal";
+import { QuizFormData } from "@/lib/form-schema";
+
+export default function HomePage() {
+  const [currentStage, setCurrentStage] = useState(1);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [formData, setFormData] = useState<QuizFormData>({
+    service: "",
+    fleetSize: "",
+    businessDetails: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    country: "",
+    company: "",
+    isGovernment: false,
+    marketingConsent: false,
+    termsConsent: false
+  });
+
+  const nextStage = () => {
+    if (currentStage < 5) {
+      setCurrentStage(prev => prev + 1);
+      window.scrollTo({ top: document.getElementById('pricing-form')?.offsetTop || 0, behavior: 'smooth' });
+    }
+  };
+
+  const prevStage = () => {
+    if (currentStage > 1) {
+      setCurrentStage(prev => prev - 1);
+    }
+  };
+
+  const handleSuccess = () => {
+    setShowSuccessModal(true);
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    // Reset form after closing success modal
+    setCurrentStage(1);
+    setFormData({
+      service: "",
+      fleetSize: "",
+      businessDetails: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      country: "",
+      company: "",
+      isGovernment: false,
+      marketingConsent: false,
+      termsConsent: false
+    });
+  };
+
+  const steps = ["Service", "Fleet Size", "Details", "Contact", "Confirm"];
+
+  // Define the handleSubmit function for the form
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    // Basic log to confirm the handler is attached
+    console.log("Netlify form submission initiated.");
+    
+    // We are letting the default form submission proceed to Netlify.
+    // Netlify will handle the POST request based on the form attributes.
+    // Client-side validation errors are shown inline within FormStageFive.
+    // Netlify also provides basic server-side validation (e.g., for required fields).
+
+    // We might trigger the success modal *optimistically* here, 
+    // or better, configure Netlify to redirect to a success page 
+    // or use Netlify Functions/AJAX for a callback.
+    // For now, we won't trigger the modal automatically on submit.
+    // handleSuccess(); // Removed optimistic modal trigger
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <SiteHeader />
+      
+      <main className="flex-grow">
+        <HeroSection />
+        
+        <section id="lead-form" className="py-4 md:py-12 bg-white">
+          <div className="container mx-auto px-2 sm:px-4">
+            <form
+              name="landing-page-lead-form"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit} // Keep handler attached for logging/potential future use
+              // Consider adding a Netlify success page redirect:
+              // action="/thank-you/" // Example redirect path
+            >
+              {/* ... form-name and bot-field hidden inputs ... */}
+              <input type="hidden" name="form-name" value="landing-page-lead-form" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </p>
+              
+              {/* Add `required` attribute to necessary hidden fields for Netlify validation */}
+              <input type="hidden" name="service" value={formData.service || ''} required />
+              <input type="hidden" name="fleetSize" value={formData.fleetSize || ''} required />
+              <textarea hidden name="businessDetails">{formData.businessDetails || ''}</textarea>
+              <input type="hidden" name="email" value={formData.email || ''} required />
+              <input type="hidden" name="firstName" value={formData.firstName || ''} required />
+              <input type="hidden" name="lastName" value={formData.lastName || ''} required />
+              <input type="hidden" name="phone" value={formData.phone || ''} required />
+              <input type="hidden" name="country" value={formData.country || ''} required /> 
+              <input type="hidden" name="company" value={formData.company || ''} />
+              <input type="hidden" name="isGovernment" value={formData.isGovernment ? 'true' : 'false'} /> 
+              <input type="hidden" name="marketingConsent" value={formData.marketingConsent ? 'true' : 'false'} />
+              <input type="hidden" name="termsConsent" value={formData.termsConsent ? 'true' : 'false'} required />
+              {/* END: Hidden "Ghost" inputs */}
+
+              <Card className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl/20 overflow-hidden border-t-4 border-t-orange mt-2">
+                <div 
+                  className="bg-primary px-4 sm:px-6 py-4 text-white text-center cursor-pointer relative"
+                  onClick={() => {
+                    // Scroll to form options
+                    document.getElementById('lead-form')?.scrollIntoView({behavior: 'smooth'});
+                    
+                    // Add animation class to form option cards
+                    const optionCards = document.querySelectorAll('.form-option-card');
+                    if (optionCards.length > 0) {
+                      optionCards.forEach((card, index) => {
+                        // Stagger the animations
+                        setTimeout(() => {
+                          card.classList.add('highlight-pulse');
+                          // Remove the class after animation completes
+                          setTimeout(() => {
+                            card.classList.remove('highlight-pulse');
+                          }, 800);
+                        }, index * 200);
+                      });
+                    }
+                  }}
+                >
+                  <h2 className="text-lg sm:text-xl font-semibold">Get a Free Quote & Demo Today!</h2>
+                </div>
+                
+                <div className="bg-white px-0 sm:px-4 pt-2 sm:pt-6" id="form-options">
+                </div>
+                
+                {currentStage === 1 && (
+                  <FormStageOne 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    nextStage={nextStage} 
+                    prevStage={prevStage}
+                    onSuccess={handleSuccess}
+                  />
+                )}
+                
+                {currentStage === 2 && (
+                  <FormStageTwo 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    nextStage={nextStage} 
+                    prevStage={prevStage}
+                    onSuccess={handleSuccess}
+                  />
+                )}
+                
+                {currentStage === 3 && (
+                  <FormStageThree 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    nextStage={nextStage} 
+                    prevStage={prevStage}
+                    onSuccess={handleSuccess}
+                  />
+                )}
+                
+                {currentStage === 4 && (
+                  <FormStageFour 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    nextStage={nextStage} 
+                    prevStage={prevStage}
+                    onSuccess={handleSuccess}
+                  />
+                )}
+                
+                {currentStage === 5 && (
+                  <FormStageFive 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    prevStage={prevStage}
+                    onSuccess={handleSuccess}
+                  />
+                )}
+              </Card>
+            </form>
+          </div>
+        </section>
+        
+        <BenefitsSection />
+        <TestimonialsSection />
+        
+        <SuccessModal 
+          open={showSuccessModal} 
+          onClose={handleCloseSuccessModal} 
+        />
+      </main>
+      
+      <SiteFooter />
+    </div>
+  );
+}

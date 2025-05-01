@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base */
+  --background: 0 0% 100%; /* White #FFFFFF */
+  --foreground: 0 0% 20%; /* Dark Gray #333333 */
+  --muted: 0 0% 96%; /* Light Gray #F5F5F5 */
+  --muted-foreground: 0 0% 40%;
+  
+  /* Popover/Card */
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 20%;
+  
+  /* Inputs/Borders */
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  
+  /* Primary - Orange */
+  --primary: 40 95% 56%; /* #F9A825 */
+  --primary-foreground: 0 0% 100%;
+  
+  /* Secondary - Dark Teal */
+  --secondary: 188 52% 22%; /* #1A4D54 */
+  --secondary-foreground: 0 0% 100%;
+  
+  /* Accent - Light Teal */
+  --accent: 191 53% 36%; /* #2A7D8B */
+  --accent-foreground: 0 0% 100%;
+  
+  /* Gold/Brown for headings */
+  --heading: 45 59% 34%; /* #8B6B23 */
+  
+  /* Soft Orange for highlights */
+  --highlight: 45 100% 52%; /* #FFC107 */
+  
+  /* System colors */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 188 52% 22%; /* Match secondary/teal */
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Base */
+  --background: 188 52% 22%; /* Dark Teal #1A4D54 */
+  --foreground: 0 0% 100%; /* White #FFFFFF */
+  --muted: 188 30% 30%;
+  --muted-foreground: 0 0% 80%;
+  
+  /* Popover/Card */
+  --popover: 188 52% 22%;
+  --popover-foreground: 0 0% 100%;
+  --card: 188 52% 22%;
+  --card-foreground: 0 0% 100%;
+  
+  /* Inputs/Borders */
+  --border: 191 53% 36%; /* Light Teal #2A7D8B */
+  --input: 191 53% 36%;
+  
+  /* Primary - Orange */
+  --primary: 40 95% 56%; /* #F9A825 */
+  --primary-foreground: 0 0% 100%;
+  
+  /* Secondary - Light Teal */
+  --secondary: 191 53% 36%; /* #2A7D8B */
+  --secondary-foreground: 0 0% 100%;
+  
+  /* Accent - Soft Orange */
+  --accent: 45 100% 52%; /* #FFC107 */
+  --accent-foreground: 0 0% 100%;
+  
+  /* Gold/Brown for headings */
+  --heading: 45 59% 34%; /* #8B6B23 */
+  
+  /* System colors */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 40 95% 56%; /* Match primary/orange */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-secondary dark:text-white font-bold;
+  }
+  
+  /* Animation for highlighting form options when header is clicked */
+  @keyframes highlight-pulse {
+    0% { 
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(249, 168, 37, 0); 
+    }
+    50% { 
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(249, 168, 37, 0.5); 
+    }
+    100% { 
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(249, 168, 37, 0); 
+    }
+  }
+  
+  .highlight-pulse {
+    animation: highlight-pulse 0.8s ease-in-out;
+  }
+}
+
+@layer utilities {
+  .text-heading {
+    color: hsl(45, 59%, 34%); /* Gold/Brown #8B6B23 */
+  }
+  
+  .text-highlight {
+    color: hsl(45, 100%, 52%); /* Soft Orange #FFC107 */
+  }
+  
+  .bg-teal {
+    background-color: hsl(188, 52%, 22%); /* Dark Teal #1A4D54 */
+  }
+  
+  .bg-light-teal {
+    background-color: hsl(191, 53%, 36%); /* Light Teal #2A7D8B */
+  }
+  
+  .bg-orange {
+    background-color: hsl(40, 95%, 56%); /* Orange #F9A825 */
+  }
+  
+  .bg-soft-orange {
+    background-color: hsl(45, 100%, 52%); /* Soft Orange #FFC107 */
+  }
+  
+  .bg-primary-dark {
+    background-color: hsl(40, 95%, 50%); /* Darker Orange #E69822 */
+  }
+}
+
