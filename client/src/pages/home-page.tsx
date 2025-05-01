@@ -35,7 +35,6 @@ export default function HomePage() {
   const nextStage = () => {
     if (currentStage < 5) {
       setCurrentStage(prev => prev + 1);
-      window.scrollTo({ top: document.getElementById('pricing-form')?.offsetTop || 0, behavior: 'smooth' });
     }
   };
 
@@ -71,21 +70,38 @@ export default function HomePage() {
 
   const steps = ["Service", "Fleet Size", "Details", "Contact", "Confirm"];
 
+  // Helper function to encode form data for Netlify
+  const encode = (data: { [key: string]: any }) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
   // Define the handleSubmit function for the form
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Basic log to confirm the handler is attached
-    console.log("Netlify form submission initiated.");
-    
-    // We are letting the default form submission proceed to Netlify.
-    // Netlify will handle the POST request based on the form attributes.
-    // Client-side validation errors are shown inline within FormStageFive.
-    // Netlify also provides basic server-side validation (e.g., for required fields).
+    event.preventDefault(); // Prevent default browser submission
 
-    // We might trigger the success modal *optimistically* here, 
-    // or better, configure Netlify to redirect to a success page 
-    // or use Netlify Functions/AJAX for a callback.
-    // For now, we won't trigger the modal automatically on submit.
-    // handleSuccess(); // Removed optimistic modal trigger
+    console.log("Submitting form via AJAX to Netlify...");
+
+    fetch("/", { // POST to the root path
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ 
+        "form-name": "landing-page-lead-form", // Ensure form name matches
+        ...formData // Spread the rest of the form data state
+      }),
+    })
+      .then(() => {
+        console.log("Netlify form submission successful!");
+        handleSuccess(); // Trigger the success modal
+      })
+      .catch((error) => {
+        console.error("Netlify form submission error:", error);
+        // Optionally: Show an error message to the user
+        alert(`Submission Error: ${error.toString()}`);
+      });
   };
 
   return (

@@ -46,7 +46,7 @@ export function SuccessModal({ open, onClose }: SuccessModalProps) {
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold mb-2">Request Submitted!</DialogTitle>
             <DialogDescription className="text-gray-600">
-              Thank you for your interest in Elite Copilot. A member of our team will contact you shortly with pricing information for your Singapore fleet.
+              Thank you for your interest in Elite Copilot. A member of our team will contact you shortly.
             </DialogDescription>
           </DialogHeader>
           <div className="mt-6">
