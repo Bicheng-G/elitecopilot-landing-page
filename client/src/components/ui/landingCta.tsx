@@ -14,7 +14,7 @@ const LandingCTA: React.FC<LandingCTAProps> = () => {
     // 2. dataLayer 埋点
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-      event: 'landing-cta-click',
+      event: 'landing_cta_click',
     });
 
     // 3. 给所有 .form-option-card 加动画
