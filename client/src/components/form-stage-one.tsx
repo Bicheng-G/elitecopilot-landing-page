@@ -59,6 +59,13 @@ export function FormStageOne({
 
   const handleNext = () => {
     if (selectedService && nextStage) {
+      window.dataLayer = window.dataLayer || [];
+
+      // 2. 只有在满足条件（validated）时推送打点
+      window.dataLayer.push({
+        event: 'landing-form-interaction',
+      });
+
       nextStage();
     }
   };

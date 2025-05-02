@@ -12,6 +12,7 @@ import { FormStageFour } from "@/components/form-stage-four";
 import { FormStageFive } from "@/components/form-stage-five";
 import { SuccessModal } from "@/components/success-modal";
 import { QuizFormData } from "@/lib/form-schema";
+import LandingCTA  from "@/components/ui/landingCta";
 
 export default function HomePage() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -136,30 +137,7 @@ export default function HomePage() {
               {/* END: Hidden "Ghost" inputs */}
 
               <Card className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-t-orange mt-2">
-                <div 
-                  className="bg-primary px-4 sm:px-6 py-4 text-white text-center cursor-pointer relative shadow-lg rounded-sm"
-                  onClick={() => {
-                    // Scroll to form options
-                    document.getElementById('lead-form')?.scrollIntoView({behavior: 'smooth'});
-                    
-                    // Add animation class to form option cards
-                    const optionCards = document.querySelectorAll('.form-option-card');
-                    if (optionCards.length > 0) {
-                      optionCards.forEach((card, index) => {
-                        // Stagger the animations
-                        setTimeout(() => {
-                          card.classList.add('highlight-pulse');
-                          // Remove the class after animation completes
-                          setTimeout(() => {
-                            card.classList.remove('highlight-pulse');
-                          }, 800);
-                        }, index * 200);
-                      });
-                    }
-                  }}
-                >
-                  <h2 className="text-lg sm:text-xl font-semibold">Get a Free Quote & Demo Today!</h2>
-                </div>
+                <LandingCTA />
                 
                 <div className="bg-white px-0 sm:px-4 pt-2 sm:pt-6" id="form-options">
                 </div>

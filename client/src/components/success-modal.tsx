@@ -25,9 +25,12 @@ export function SuccessModal({ open, onClose }: SuccessModalProps) {
   // Track form submission when modal opens
   useEffect(() => {
     if (open && typeof window !== 'undefined' && window.dataLayer) {
+      // 1. 确保 dataLayer 已初始化
+      window.dataLayer = window.dataLayer || [];
+
       // Push form submission event to Google Tag Manager
       window.dataLayer.push({
-        'event': 'form_submission',
+        'event': 'landing_form_submission',
         'form_name': 'landing_page_lead_form',
         'conversion_type': 'lead'
       });
