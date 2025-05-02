@@ -63,7 +63,7 @@ export function FormStageOne({
 
       // 2. 只有在满足条件（validated）时推送打点
       window.dataLayer.push({
-        event: 'landing-form-interaction',
+        event: 'landing_form_interaction',
       });
 
       nextStage();
