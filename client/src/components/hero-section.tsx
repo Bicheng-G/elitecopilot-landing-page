@@ -3,7 +3,7 @@ import { CheckCircle } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="bg-teal text-white bg-truck-pattern bg-no-repeat bg-right-bottom bg-[size:45%]">
-      <div className="container py-7 md:py-20 lg:py-24 mx-auto px-4 md:px-6 lg:px-8">
+      <div className="container py-12 md:py-20 lg:py-24 mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
           <div className="px-3 md:w-2/3 lg:w-3/5 mb-8 md:mb-0">
             <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">

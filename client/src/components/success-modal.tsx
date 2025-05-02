@@ -28,7 +28,7 @@ export function SuccessModal({ open, onClose }: SuccessModalProps) {
       // Push form submission event to Google Tag Manager
       window.dataLayer.push({
         'event': 'form_submission',
-        'form_name': 'quote_request',
+        'form_name': 'landing_page_lead_form',
         'conversion_type': 'lead'
       });
       

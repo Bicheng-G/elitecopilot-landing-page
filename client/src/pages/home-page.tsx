@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { ProgressSteps } from "@/components/ui/progress-steps";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HeroSection } from "@/components/hero-section";
@@ -127,7 +126,7 @@ export default function HomePage() {
               {/* Add `required` attribute to necessary hidden fields for Netlify validation */}
               <input type="hidden" name="service" value={formData.service || ''} required />
               <input type="hidden" name="fleetSize" value={formData.fleetSize || ''} required />
-              <textarea hidden name="businessDetails">{formData.businessDetails || ''}</textarea>
+              <textarea hidden name="businessDetails" defaultValue={formData.businessDetails || ''}></textarea>
               <input type="hidden" name="email" value={formData.email || ''} required />
               <input type="hidden" name="firstName" value={formData.firstName || ''} required />
               <input type="hidden" name="lastName" value={formData.lastName || ''} required />
@@ -136,9 +135,9 @@ export default function HomePage() {
               <input type="hidden" name="company" value={formData.company || ''} required/>
               {/* END: Hidden "Ghost" inputs */}
 
-              <Card className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl/20 overflow-hidden border-t-4 border-t-orange mt-2">
+              <Card className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-t-orange mt-2">
                 <div 
-                  className="bg-primary px-4 sm:px-6 py-4 text-white text-center cursor-pointer relative"
+                  className="bg-primary px-4 sm:px-6 py-4 text-white text-center cursor-pointer relative shadow-lg rounded-sm"
                   onClick={() => {
                     // Scroll to form options
                     document.getElementById('lead-form')?.scrollIntoView({behavior: 'smooth'});

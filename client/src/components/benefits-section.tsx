@@ -61,7 +61,7 @@ export function BenefitsSection() {
 
         <div className="text-center mt-8 md:mt-12 bg-light-teal text-white p-4 sm:p-6 rounded-lg max-w-3xl mx-auto">
           <p className="font-medium text-sm md:text-lg">
-            Choose Elite Copilot for fleet safety and innovation in Singapore.
+            Choose Elite Copilot for fleet safety and AI-powered innovation in Singapore.
           </p>
           <Button
             onClick={() => {

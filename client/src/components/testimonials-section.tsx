@@ -4,20 +4,26 @@ import { Star } from "lucide-react";
 interface Testimonial {
   content: string;
   author: string;
+  company: string;
   title: string;
+  logo: string;
 }
 
 export function TestimonialsSection() {
   const testimonials: Testimonial[] = [
     {
-      content: "FleetTrack Pro has transformed how we manage our delivery fleet. We've reduced fuel costs by 15% and improved on-time deliveries by 22% in just three months.",
-      author: "Sarah Johnson",
-      title: "Operations Director, GlobalShip Logistics"
+      content: "Elite Copilot is the best driver monitoring system we used so far. We especially like the easy to use cloud platform to identify unsafe driving behavior at a glance.",
+      author: "Ronald",
+      title: "General Manager",
+      company: "Boke Tools Machinery Pte Ltd",
+      logo: "/assets/boke-logo.png"
     },
     {
       content: "The driver behavior monitoring has significantly improved our safety record. Insurance premiums are down, and our team feels more accountable. Great investment!",
-      author: "Michael Rodriguez",
-      title: "Fleet Manager, CityWide Services"
+      author: "Tony",
+      title: "Managing Director",
+      company: "Tech Engineering & Construction Pte Ltd",
+      logo: "/assets/tec-logo.png"
     }
   ];
 
@@ -41,11 +47,14 @@ export function TestimonialsSection() {
                   <p className="italic mb-4">{testimonial.content}</p>
                   <div className="flex items-center">
                     <div className="mr-3">
-                      <div className="w-10 h-10 bg-primary rounded-full"></div>
+                      <div className="w-10 h-10 bg-transparent rounded-full">
+                        <img src={testimonial.logo} alt={testimonial.author} className="w-full h-full object-contain rounded-full" />
+                      </div>
                     </div>
                     <div>
                       <p className="font-medium">{testimonial.author}</p>
                       <p className="text-sm text-gray-600">{testimonial.title}</p>
+                      <p className="text-sm text-gray-600">{testimonial.company}</p>
                     </div>
                   </div>
                 </CardContent>
