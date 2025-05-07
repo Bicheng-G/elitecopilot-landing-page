@@ -33,16 +33,16 @@ const serviceOptions: ServiceOption[] = [
       "Monitor driving patterns and detect fatigue and unsafe driving behaviors for evidence-based training.",
   },
   {
-    value: "Cloud Platform, On-demand Video Evidence",
+    value: "On-Demand Video On Cloud",
     icon: <Cloud className="h-6 w-6 text-primary" />,
-    title: "Cloud Platform, On-demand Video Evidence",
+    title: "On-Demand Video On Cloud",
     description: "The video evidence is stored in the cloud, and can be accessed on-demand for analysis. Remote management to fleet operations.",
   },
   {
     value: "Safety Compliances",
     icon: <ClipboardCheck className="h-6 w-6 text-primary" />,
     title: "Safety Compliances",
-    description: "Manage compliance, streamline operations. Cultivate safety culture.",
+    description: "Manage compliance, fulfill regulatory requirements, and cultivate safety culture.",
   },
 ];
 

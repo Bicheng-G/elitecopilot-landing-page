@@ -37,9 +37,10 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
         
         <TransformWrapper
           initialScale={1}
+          centerOnInit={true}
           minScale={0.5} // Minimum zoom out
           maxScale={8}   // Maximum zoom in
-          limitToBounds={true} // Prevents panning outside the image bounds too much
+          limitToBounds={false} // Prevents panning outside the image bounds too much
           doubleClick={{ disabled: false, step: 1.5 }} // Enable double tap/click to zoom
           wheel={{ step: 0.2 }} // Adjust wheel zoom sensitivity
           pinch={{ step: 0.5 }} // Adjust pinch zoom sensitivity if needed
@@ -56,7 +57,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
               </div>
               */}
               <TransformComponent
-                wrapperStyle={{ width: '100%', height: '100%' }} // Wrapper takes full modal space
+                wrapperStyle={{ width: '100vw', height: '100vh' }} // Wrapper takes full modal space
                 contentStyle={{ width: 'auto', height: 'auto' }} // Content (image) sizes itself
               >
                 <img 
