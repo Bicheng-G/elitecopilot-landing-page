@@ -35,7 +35,7 @@ const LandingCTA: React.FC<LandingCTAProps> = () => {
       onClick={handleCtaClick}
     >
       <h2 className="text-lg sm:text-xl font-semibold">
-        Get a Free Quote & Demo Today!
+        Fill Up The Form For Free Quote & Demo
       </h2>
     </div>
   );

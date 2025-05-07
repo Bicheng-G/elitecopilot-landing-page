@@ -24,7 +24,7 @@ export function FormStageTwo({ formData, setFormData, nextStage, prevStage }: Fo
     <div className="px-3 sm:px-6 pb-4 sm:pb-6 relative">
       <div className="mb-4 sm:mb-6 text-center">
         <div className="inline-block bg-orange text-white px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-2">
-          Step 2 of 5
+          Step 2 of 3
         </div>
         <h3 className="text-lg sm:text-xl font-semibold">How many vehicles do you have?</h3>
         <p className="text-xs sm:text-sm text-gray-600 mt-1">Select fleet size</p>

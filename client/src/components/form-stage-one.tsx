@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 import { FormStageProps } from "@/lib/form-schema";
 import {
   Truck,
-  Video,
-  HardHat,
+  User,
+  Cloud,
   ClipboardCheck,
   ChevronRight,
 } from "lucide-react";
@@ -19,30 +19,30 @@ type ServiceOption = {
 
 const serviceOptions: ServiceOption[] = [
   {
-    value: "Blind Spot Detection",
+    value: "Blind Spot Detection, Pedestrian Warning",
     icon: <Truck className="h-6 w-6 text-primary" />,
-    title: "Blind Spot Detection",
+    title: "Blind Spot Detection, Pedestrian Warning",
     description:
-      "Provide visibility to blind spots and boost driver confidence navigating complex road conditions.",
+      "Provide visibility to blind spots and provide sound and visual alert to the surrounding pedesterians.",
   },
   {
-    value: "Driver Behavior, Video Evidence",
-    icon: <Video className="h-6 w-6 text-primary" />,
-    title: "Driver Behavior, Video Evidence",
+    value: "Driver Behavior, Fatigue Monitoring",
+    icon: <User className="h-6 w-6 text-primary" />,
+    title: "Driver Behavior, Fatigue Monitoring",
     description:
-      "Monitor driving patterns and capture video evidence for safety.",
+      "Monitor driving patterns and detect fatigue and unsafe driving behaviors for evidence-based training.",
   },
   {
-    value: "Pedestrian Warning",
-    icon: <HardHat className="h-6 w-6 text-primary" />,
-    title: "Pedestrian Warning",
-    description: "Provide sound and visual alert to surrounding pedesterians.",
+    value: "Cloud Platform, On-demand Video Evidence",
+    icon: <Cloud className="h-6 w-6 text-primary" />,
+    title: "Cloud Platform, On-demand Video Evidence",
+    description: "The video evidence is stored in the cloud, and can be accessed on-demand for analysis. Remote management to fleet operations.",
   },
   {
     value: "Safety Compliances",
     icon: <ClipboardCheck className="h-6 w-6 text-primary" />,
     title: "Safety Compliances",
-    description: "Manage compliance, streamline operations.",
+    description: "Manage compliance, streamline operations. Cultivate safety culture.",
   },
 ];
 
@@ -71,10 +71,10 @@ export function FormStageOne({
   };
 
   return (
-    <div className="px-3 sm:px-6 pb-4 sm:pb-6">
+    <div className="px-3 sm:px-6 pt-2 sm:pt-4 pb-4 sm:pb-6">
       <div className="mb-4 sm:mb-6 text-center">
         <h3 className="text-lg sm:text-xl font-semibold">
-          Which fleet safety solution you need?
+          First, which solution are you looking for?
         </h3>
         <p className="text-xs sm:text-sm text-gray-600 mt-1">
           👇 Tap an option below to start

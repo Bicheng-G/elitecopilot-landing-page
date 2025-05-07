@@ -7,20 +7,19 @@ import { BenefitsSection } from "@/components/benefits-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { FormStageOne } from "@/components/form-stage-one";
 import { FormStageTwo } from "@/components/form-stage-two";
-import { FormStageThree } from "@/components/form-stage-three";
 import { FormStageFour } from "@/components/form-stage-four";
-import { FormStageFive } from "@/components/form-stage-five";
 import { SuccessModal } from "@/components/success-modal";
 import { QuizFormData } from "@/lib/form-schema";
-import LandingCTA  from "@/components/ui/landingCta";
+import LandingCTA  from "@/components/ui/landingCta"; 
+import { ImageModal } from "@/components/image-modal"; 
 
 export default function HomePage() {
   const [currentStage, setCurrentStage] = useState(1);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [formData, setFormData] = useState<QuizFormData>({
     service: "",
     fleetSize: "",
-    businessDetails: "",
     email: "",
     firstName: "",
     lastName: "",
@@ -29,8 +28,11 @@ export default function HomePage() {
     company: ""
   });
 
+  const openImageModal = () => setIsImageModalOpen(true);
+  const closeImageModal = () => setIsImageModalOpen(false);
+
   const nextStage = () => {
-    if (currentStage < 5) {
+    if (currentStage < 3) {
       setCurrentStage(prev => prev + 1);
     }
   };
@@ -52,7 +54,6 @@ export default function HomePage() {
     setFormData({
       service: "",
       fleetSize: "",
-      businessDetails: "",
       email: "",
       firstName: "",
       lastName: "",
@@ -62,7 +63,7 @@ export default function HomePage() {
     });
   };
 
-  const steps = ["Service", "Fleet Size", "Details", "Contact", "Confirm"];
+  const steps = ["Service", "Fleet Size", "Contact & Confirm"];
 
   // Helper function to encode form data for Netlify
   const encode = (data: { [key: string]: any }) => {
@@ -105,6 +106,22 @@ export default function HomePage() {
       <main className="flex-grow">
         <HeroSection />
         
+        <section className="pt-6 md:pt-8 bg-white ">
+          <div className="container mx-auto px-3 sm:px-4">
+            <h2 className="text-xl md:text-3xl font-bold text-center text-secondary mb-6 md:mb-8">
+              Solution Overview
+            </h2>
+          </div>
+          <div className="container mx-auto px-3 sm:px-4 flex justify-center">
+            <img 
+              src="/assets/trucking_solution.jpg" 
+              alt="Trucking Solutions" 
+              style={{ width: 'auto', height: 'auto', maxWidth: '80%', objectFit: 'cover', cursor: 'pointer' }}
+              onClick={openImageModal}
+            />
+          </div>
+        </section>
+        
         <section id="lead-form" className="py-4 md:py-12 bg-white">
           <div className="container mx-auto px-2 sm:px-4">
             <form
@@ -127,7 +144,6 @@ export default function HomePage() {
               {/* Add `required` attribute to necessary hidden fields for Netlify validation */}
               <input type="hidden" name="service" value={formData.service || ''} required />
               <input type="hidden" name="fleetSize" value={formData.fleetSize || ''} required />
-              <textarea hidden name="businessDetails" defaultValue={formData.businessDetails || ''}></textarea>
               <input type="hidden" name="email" value={formData.email || ''} required />
               <input type="hidden" name="firstName" value={formData.firstName || ''} required />
               <input type="hidden" name="lastName" value={formData.lastName || ''} required />
@@ -163,27 +179,7 @@ export default function HomePage() {
                 )}
                 
                 {currentStage === 3 && (
-                  <FormStageThree 
-                    formData={formData} 
-                    setFormData={setFormData} 
-                    nextStage={nextStage} 
-                    prevStage={prevStage}
-                    onSuccess={handleSuccess}
-                  />
-                )}
-                
-                {currentStage === 4 && (
                   <FormStageFour 
-                    formData={formData} 
-                    setFormData={setFormData} 
-                    nextStage={nextStage} 
-                    prevStage={prevStage}
-                    onSuccess={handleSuccess}
-                  />
-                )}
-                
-                {currentStage === 5 && (
-                  <FormStageFive 
                     formData={formData} 
                     setFormData={setFormData} 
                     prevStage={prevStage}
@@ -195,13 +191,22 @@ export default function HomePage() {
           </div>
         </section>
         
-        <BenefitsSection />
         <TestimonialsSection />
+        <BenefitsSection />
+
         
         <SuccessModal 
           open={showSuccessModal} 
           onClose={handleCloseSuccessModal} 
         />
+
+        {isImageModalOpen && (
+          <ImageModal 
+            src="/assets/trucking_solution.jpg" 
+            alt="Trucking Solutions - Enlarged"
+            onClose={closeImageModal} 
+          />
+        )}
       </main>
       
       <SiteFooter />

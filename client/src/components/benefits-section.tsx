@@ -31,7 +31,7 @@ export function BenefitsSection() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="pt-4 md:pt-8 pb-8 md:pb-12 bg-white">
       <div className="container mx-auto px-3 sm:px-4">
         <h2 className="text-xl md:text-3xl font-bold text-center text-secondary mb-1 md:mb-2">
           Why Choose Elite Copilot?
@@ -57,39 +57,6 @@ export function BenefitsSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center mt-8 md:mt-12 bg-light-teal text-white p-4 sm:p-6 rounded-lg max-w-3xl mx-auto">
-          <p className="font-medium text-sm md:text-lg">
-            Choose Elite Copilot for fleet safety and AI-powered innovation in Singapore.
-          </p>
-          <Button
-            onClick={() => {
-              // Scroll to form options
-              document.getElementById('lead-form')?.scrollIntoView({behavior: 'smooth'});
-              
-              // Add animation class to form option cards
-              const optionCards = document.querySelectorAll('.form-option-card');
-              if (optionCards.length > 0) {
-                optionCards.forEach((card, index) => {
-                  // Stagger the animations
-                  setTimeout(() => {
-                    card.classList.add('highlight-pulse');
-                    // Remove the class after animation completes
-                    setTimeout(() => {
-                      card.classList.remove('highlight-pulse');
-                    }, 800);
-                  }, index * 200);
-                });
-              }
-            }}
-            variant="primary"
-            size="lg"
-            className="px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-medium text-teal-800 mt-4 sm:mt-6" 
-            type="button"
-          >
-            Get a Free Quote & Demo
-          </Button>
         </div>
       </div>
     </section>
