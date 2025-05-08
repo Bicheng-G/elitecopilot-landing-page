@@ -38,14 +38,6 @@ export function FormStageFour({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
-    if (validateForm()) {
-      if (onSuccess) {
-        onSuccess();
-      }
-    }
-  };
-
   return (
     <div className="px-3 sm:px-6 pb-4 sm:pb-6 relative">
       <div className="mb-4 sm:mb-6 text-center">
@@ -139,8 +131,7 @@ export function FormStageFour({
             <ChevronLeft className="" />
         </Button>
         <Button 
-          type="button"
-          onClick={handleSubmit}
+          type="submit"
           className="text-teal-800 px-8 sm:px-10 py-5 sm:py-6 text-xs sm:text-base "
         >
           Confirm Quote Request

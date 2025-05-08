@@ -9,7 +9,7 @@ import { FormStageOne } from "@/components/form-stage-one";
 import { FormStageTwo } from "@/components/form-stage-two";
 import { FormStageFour } from "@/components/form-stage-four";
 import { SuccessModal } from "@/components/success-modal";
-import { QuizFormData } from "@/lib/form-schema";
+import { QuizFormData, quoteFormSchema } from "@/lib/form-schema";
 import LandingCTA  from "@/components/ui/landingCta"; 
 import { ImageModal } from "@/components/image-modal"; 
 
@@ -75,6 +75,19 @@ export default function HomePage() {
   // Define the handleSubmit function for the form
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default browser submission
+
+    // Validate form data only when on the final stage
+    if (currentStage === 3) {
+      const validationResult = quoteFormSchema.safeParse(formData);
+      if (!validationResult.success) {
+        // console.error("Form validation failed:", validationResult.error.flatten().fieldErrors);
+        // Optionally, update a state to display these errors in the UI
+        // For now, just alert and prevent submission if validation fails
+        const firstError = Object.values(validationResult.error.flatten().fieldErrors)[0]?.[0];
+        alert(`Please correct the errors before submitting: ${firstError || 'Validation failed.'}`);
+        return; // Stop submission if validation fails
+      }
+    }
 
     console.log("Submitting form via AJAX to Netlify...");
 
