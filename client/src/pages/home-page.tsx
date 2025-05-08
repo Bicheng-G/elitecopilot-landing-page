@@ -148,7 +148,6 @@ export default function HomePage() {
               <input type="hidden" name="firstName" value={formData.firstName || ''} required />
               <input type="hidden" name="lastName" value={formData.lastName || ''} required />
               <input type="hidden" name="phone" value={formData.phone || ''} required />
-              <input type="hidden" name="country" value={formData.country || ''} required /> 
               <input type="hidden" name="company" value={formData.company || ''} required/>
               {/* END: Hidden "Ghost" inputs */}
 
