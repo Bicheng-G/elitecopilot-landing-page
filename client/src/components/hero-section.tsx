@@ -30,7 +30,7 @@ export function HeroSection() {
                 <CheckCircle className="h-5 w-5 text-orange mr-2 mt-1 flex-shrink-0" />
                 <span>
                   <span className="font-semibold text-highlight">
-                    Anticipates Driver Behavior
+                    Commercial Fleet Camera with GPS
                   </span>{" "}
                 </span>
               </div>
@@ -38,7 +38,7 @@ export function HeroSection() {
                 <CheckCircle className="h-5 w-5 text-orange mr-2 mt-1 flex-shrink-0" />
                 <span>
                   <span className="font-semibold text-highlight">
-                    Rreduces Incidents
+                    Driver Behavior & Blind Spot Monitoring
                   </span>{" "}
                 </span>
               </div>
