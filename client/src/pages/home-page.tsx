@@ -24,7 +24,6 @@ export default function HomePage() {
     firstName: "",
     lastName: "",
     phone: "",
-    country: "",
     company: ""
   });
 
@@ -58,7 +57,6 @@ export default function HomePage() {
       firstName: "",
       lastName: "",
       phone: "",
-      country: "",
       company: ""
     });
   };
@@ -142,13 +140,13 @@ export default function HomePage() {
               </p>
               
               {/* Add `required` attribute to necessary hidden fields for Netlify validation */}
-              <input type="hidden" name="service" value={formData.service || ''} required />
-              <input type="hidden" name="fleetSize" value={formData.fleetSize || ''} required />
-              <input type="hidden" name="email" value={formData.email || ''} required />
-              <input type="hidden" name="firstName" value={formData.firstName || ''} required />
-              <input type="hidden" name="lastName" value={formData.lastName || ''} required />
-              <input type="hidden" name="phone" value={formData.phone || ''} required />
-              <input type="hidden" name="company" value={formData.company || ''} required/>
+              <input type="hidden" name="service" value={formData.service || ''}  />
+              <input type="hidden" name="fleetSize" value={formData.fleetSize || ''}  />
+              <input type="hidden" name="email" value={formData.email || ''}  />
+              <input type="hidden" name="firstName" value={formData.firstName || ''}  />
+              <input type="hidden" name="lastName" value={formData.lastName || ''}  />
+              <input type="hidden" name="phone" value={formData.phone || ''}  />
+              <input type="hidden" name="company" value={formData.company || ''} />
               {/* END: Hidden "Ghost" inputs */}
 
               <Card className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-t-orange mt-2">

@@ -47,7 +47,7 @@ export function SuccessModal({ open, onClose }: SuccessModalProps) {
             <CheckCircle className="h-6 w-6 text-green-600" />
           </div>
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold mb-2">Request Submitted!</DialogTitle>
+            <DialogTitle className="text-2xl font-bold mb-2 text-center">Request Submitted!</DialogTitle>
             <DialogDescription className="text-gray-600">
               Thank you for your interest in Elite Copilot. A member of our team will contact you shortly.
             </DialogDescription>

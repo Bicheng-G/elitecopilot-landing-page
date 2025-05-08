@@ -7,7 +7,6 @@ export interface QuizFormData {
   firstName: string;
   lastName: string;
   phone: string;
-  country: string;
   company: string;
 }
 
@@ -26,6 +25,5 @@ export const quoteFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   phone: z.string().min(1, "Phone number is required"),
-  country: z.string().min(1, "Please select your country"),
   company: z.string().min(1, "Company is required")
 });
